@@ -15,8 +15,9 @@ jobs:
 
       - name: Install MinGW-w64 & Tools
         run: |
+          sudo dpkg --add-architecture i386
           sudo apt-get update
-          sudo apt-get install -y gcc-mingw-w64-i686 g++-mingw-w64-i686 cmake ninja-build python3 wine
+          sudo apt-get install -y gcc-mingw-w64-i686 g++-mingw-w64-i686 cmake ninja-build python3 wine wine32:i386 wine64
 
       - name: Build XP Static Dependencies (mbedTLS + libcurl)
         run: ./scripts/build_deps.sh
@@ -34,7 +35,7 @@ jobs:
           python3 scripts/check_xp_imports.py build/xpagent_tests.exe
 
       - name: Run Unit Tests in Wine
-        run: WINEDEBUG=-all wine build/xpagent_tests.exe
+        run: WINEARCH=win32 WINEDEBUG=-all wine build/xpagent_tests.exe
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
