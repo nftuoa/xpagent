@@ -1,0 +1,6 @@
+#include <windows.h>
+#include "resource.h"
+
+IDR_APP_MANIFEST RT_MANIFEST "app.manifest"
+IDI_APP_ICON     ICON        "app.ico"
+IDR_CACERT_PEM   RCDATA      "cacert.pem"

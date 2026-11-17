@@ -1,0 +1,8 @@
+build/
+build-deps/
+third_party/mbedtls/
+third_party/curl/
+*.exe
+*.a
+*.obj
+*.res
